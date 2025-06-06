@@ -20,38 +20,35 @@ export default function MenuScreen() {
 
     return (
         <ImageBackground source={fundo} style={styles.background}>
-            <View style={styles.container}>
-                <View style={styles.form}>
-                    <Text style={styles.welcome}>BEM-VINDO</Text>
-                    
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => navigation.navigate('CadastrarPonto')}
-                    >
-                        <Text style={styles.buttonText}>CADASTRAR PONTO</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => navigation.navigate('ListarPontos')}
-                    >
-                        <Text style={styles.buttonText}>LISTAR PONTOS</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => navigation.navigate('CadastrarAjuda')}
-                    >
-                        <Text style={styles.buttonText}>CADASTRAR AJUDA</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        style={[styles.button, { marginTop: 20, backgroundColor: '#ff0000' }]}
-                        onPress={handleLogout}
-                    >
-                        <Text style={styles.buttonText}>SAIR</Text>
-                    </TouchableOpacity>
+            <View style={localStyles.container}>
+                <View style={localStyles.welcomeContainer}>
+                    <Text style={localStyles.welcomeText}>Oi, xxxx!</Text>
+                    <Text style={localStyles.subtitleText}>Como podemos te ajudar hoje?</Text>
                 </View>
+
+                <TouchableOpacity
+                    style={localStyles.button}
+                    onPress={() => navigation.navigate('CadastrarAjuda')}>
+                    <Text style={localStyles.buttonText}>Solicitar Ajuda</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={localStyles.button}
+                    onPress={() => navigation.navigate('CadastrarPonto')}>
+                    <Text style={localStyles.buttonText}>Cadastrar ponto de distribuição</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={localStyles.button}
+                    onPress={() => navigation.navigate('ListarPontos')}>
+                    <Text style={localStyles.buttonText}>Encontrar pontos perto de mim</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[localStyles.button, localStyles.logoutButton]}
+                    onPress={handleLogout}>
+                    <Text style={localStyles.buttonText}>Ver meus pontos</Text>
+                </TouchableOpacity>
             </View>
         </ImageBackground>
     );
@@ -60,8 +57,44 @@ export default function MenuScreen() {
 const localStyles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
         justifyContent: 'center',
         alignItems: 'center',
+        paddingHorizontal: 30,
+    },
+    welcomeContainer: {
+        alignItems: 'center',
+        marginBottom: 40,
+    },
+    welcomeText: {
+        fontSize: 20,
+        color: 'white',
+        textAlign: 'center',
+        fontWeight: '500',
+        marginBottom: 5,
+    },
+    subtitleText: {
+        fontSize: 16,
+        color: 'white',
+        textAlign: 'center',
+        marginBottom: 30,
+    },
+    button: {
+        backgroundColor: '#028F8F',
+        borderRadius: 10,
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        marginBottom: 15,
+        width: '90%',
+        alignItems: 'center',
+        elevation: 2,
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 14,
+        fontWeight: '600',
+    },
+    logoutButton: {
+        backgroundColor: '#028F8F',
+        marginTop: 0,
     },
 });

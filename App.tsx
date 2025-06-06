@@ -16,7 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="ListarPontos"
         screenOptions={{
           headerShown: false,
           animation: 'fade'

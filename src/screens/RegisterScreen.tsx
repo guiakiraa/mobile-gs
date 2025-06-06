@@ -157,7 +157,7 @@ export default function RegisterScreen({ navigation }: NavigationProps) {
                     />
 
                     <TouchableOpacity
-                        style={[styles.button, { marginTop: 20, marginBottom: 30 }]}
+                        style={[styles.button, { marginTop: 20, marginBottom: 30}]}
                         onPress={handleCreateAccount}
                     >
                         <Text style={styles.buttonText}>CRIAR CONTA</Text>
@@ -171,17 +171,21 @@ export default function RegisterScreen({ navigation }: NavigationProps) {
 const localStyles = StyleSheet.create({
     scrollContainer: {
         flexGrow: 1,
+        justifyContent: 'center',
+        paddingVertical: 40,
     },
     container: {
-        flex: 1,
-        padding: 20,
-        justifyContent: 'center',
+        paddingHorizontal: 20,
     },
     input: {
-        backgroundColor: 'white',
-        borderRadius: 8,
-        padding: 15,
+        backgroundColor: '#028c8c', 
+        borderRadius: 6,
+        paddingVertical: 12,
+        paddingHorizontal: 15,
         marginBottom: 15,
-        fontSize: 16,
+        fontSize: 14,
+        color: '#fff',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
     },
 });

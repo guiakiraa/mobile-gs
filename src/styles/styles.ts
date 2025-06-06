@@ -7,11 +7,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    // Take full width to accommodate the list properly
-    width: '95%', // Increased width slightly
-    flex: 1, // Allow container to take available space
+    
+    width: '95%',
+    flex: 1,
     alignItems: 'center',
-    // Removed justifyContent: 'center' to allow content to flow from top
+  
   },
   form: {
     width: '100%',
@@ -42,17 +42,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 10,
     color: '#fff',
-    marginBottom: 15, // Added some margin for spacing
+    marginBottom: 15,
   },
   button: {
     marginTop: 30,
-    backgroundColor: '#00ff00',
+    backgroundColor: '#028c8c',
     paddingVertical: 12,
     paddingHorizontal: 40,
     borderRadius: 6,
   },
   buttonText: {
-    color: '#000',
+    color: '#FFF',
     fontWeight: '600',
     letterSpacing: 1,
     textTransform: 'uppercase',
@@ -60,94 +60,94 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#fff',
-    fontSize: 28, // Slightly larger title
+    fontSize: 28,
     fontWeight: 'bold',
-    marginTop: 40, // Added margin top to push it down from the top edge
+    marginTop: 40,
     marginBottom: 20,
     textAlign: 'center',
-    textShadowColor: 'rgba(0, 0, 0, 0.75)', // Added text shadow for better readability
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
   },
   listContainer: {
-    flexGrow: 1, // Allows content to grow and be scrollable
+    flexGrow: 1,
     paddingVertical: 10,
     width: '100%',
-    paddingHorizontal: 5, // Added horizontal padding for the list items
+    paddingHorizontal: 5,
   },
   pontoCard: {
-    backgroundColor: 'rgba(26, 26, 26, 0.9)', // Slightly darker and more opaque background
-    borderRadius: 10, // Slightly more rounded corners
+    backgroundColor: 'rgba(26, 26, 26, 0.9)',
+    borderRadius: 10,
     padding: 15,
-    marginBottom: 12, // Increased margin between cards
+    marginBottom: 12,
     borderWidth: 1,
     borderColor: '#00ff00',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    shadowColor: '#00ff00', // Added subtle shadow for depth
+    shadowColor: '#00ff00',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
     shadowRadius: 3,
-    elevation: 5, // Elevation for Android shadow
+    elevation: 5,
   },
   pontoInfo: {
     flex: 1,
-    marginRight: 10, // Space between info and action buttons
+    marginRight: 10,
   },
   pontoNome: {
     color: '#fff',
-    fontSize: 19, // Slightly larger font size
+    fontSize: 19,
     fontWeight: 'bold',
-    marginBottom: 4, // Reduced margin for tighter info
+    marginBottom: 4,
   },
   pontoEndereco: {
-    color: '#a0a0a0', // Slightly darker grey for less contrast
-    fontSize: 15, // Slightly larger font size
+    color: '#a0a0a0',
+    fontSize: 15,
     marginBottom: 4,
   },
   pontoCapacidade: {
     color: '#00ff00',
     fontSize: 15,
-    fontWeight: '600', // Slightly bolder
+    fontWeight: '600',
   },
   pontoActions: {
     flexDirection: 'row',
-    gap: 5, // Reduced gap between action buttons
+    gap: 5,
   },
   actionButton: {
-    padding: 10, // Increased padding for easier tapping
-    backgroundColor: 'rgba(0, 255, 0, 0.1)', // Subtle green background
+    padding: 10,
+    backgroundColor: 'rgba(0, 255, 0, 0.1)',
     borderRadius: 5,
   },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)', // Added a semi-transparent background
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   errorContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: 'rgba(0,0,0,0.5)', // Added a semi-transparent background
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   errorText: {
-    color: '#ff6666', // A bit softer red
-    fontSize: 18, // Larger error text
+    color: '#ff6666',
+    fontSize: 18,
     textAlign: 'center',
-    marginBottom: 25, // More margin
+    marginBottom: 25,
   },
   retryButton: {
-    backgroundColor: '#00cc00', // A slightly different green
+    backgroundColor: '#00cc00',
     paddingVertical: 12,
     paddingHorizontal: 25,
     borderRadius: 8,
   },
   retryButtonText: {
     color: '#000',
-    fontWeight: '700', // Bolder text
+    fontWeight: '700',
     fontSize: 16,
   },
   backButton: {

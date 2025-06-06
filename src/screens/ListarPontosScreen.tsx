@@ -42,7 +42,7 @@ export default function ListarPontosScreen() {
 
     const handleDelete = (id: number | undefined) => {
         if (!id) return;
-        
+
         Alert.alert(
             "Confirmar exclusão",
             "Tem certeza que deseja excluir este ponto de distribuição?",
@@ -73,28 +73,23 @@ export default function ListarPontosScreen() {
     };
 
     const renderItem = ({ item }: { item: PontoDistribuicao }) => (
-        <View style={{
-            backgroundColor: '#fff',
-            borderRadius: 10,
-            padding: 15,
-            marginVertical: 8,
-            marginHorizontal: 16,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            elevation: 3
-        }}>
-            <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 4 }}>{item.nome}</Text>
-                <Text style={{ fontSize: 14 }}>{item.logradouro}, {item.numero} - {item.cep}</Text>
-                <Text style={{ fontSize: 14, marginTop: 4 }}>Tipo: {item.tipo}</Text>
+        <View style={localStyles.card}>
+            <View style={localStyles.cardInfo}>
+                <Text style={localStyles.cardTitle}>{item.nome}</Text>
+                <Text style={localStyles.cardSubtitle}>{item.logradouro}, {item.numero} | 900m de você</Text>
+                <Text style={localStyles.cardDoacoes}>Doações: {item.tipo}</Text>
             </View>
-            <View style={{ flexDirection: 'row', marginLeft: 10 }}>
-                <TouchableOpacity onPress={() => handleEdit(item)} style={{ marginHorizontal: 8 }}>
-                    <Icon name="edit" size={24} color="#00ff00" />
+
+            <View style={localStyles.cardActions}>
+                <TouchableOpacity
+                    onPress={() => handleEdit(item)}
+                    style={[localStyles.iconButton, localStyles.editButton]}>
+                    <Icon name="edit" size={20} color="#fff" />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleDelete(item.id)} style={{ marginHorizontal: 8 }}>
-                    <Icon name="delete" size={24} color="#ff0000" />
+                <TouchableOpacity
+                    onPress={() => handleDelete(item.id)}
+                    style={[localStyles.iconButton, localStyles.deleteButton]}>
+                    <Icon name="delete" size={20} color="#fff" />
                 </TouchableOpacity>
             </View>
         </View>
@@ -149,3 +144,50 @@ export default function ListarPontosScreen() {
         </ImageBackground>
     );
 }
+
+const localStyles = StyleSheet.create({
+    card: {
+        flexDirection: 'row',
+        backgroundColor: '#2EC4B6', // verde-água claro
+        borderRadius: 12,
+        marginBottom: 16,
+        overflow: 'hidden',
+        elevation: 4,
+    },
+    cardInfo: {
+        flex: 1,
+        padding: 12,
+    },
+    cardTitle: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#fff',
+        marginBottom: 4,
+    },
+    cardSubtitle: {
+        fontSize: 12,
+        color: '#fff',
+        marginBottom: 6,
+    },
+    cardDoacoes: {
+        fontSize: 12,
+        color: '#fff',
+        fontStyle: 'italic',
+    },
+    cardActions: {
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+    },
+    iconButton: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 40,
+        height: '50%',
+    },
+    editButton: {
+        backgroundColor: '#007F7F', // verde-água escuro
+    },
+    deleteButton: {
+        backgroundColor: '#FF4D4D', // vermelho
+    },
+});
