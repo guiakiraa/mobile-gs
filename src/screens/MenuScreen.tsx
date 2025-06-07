@@ -46,7 +46,7 @@ export default function MenuScreen() {
 
                 <TouchableOpacity
                     style={[localStyles.button, localStyles.logoutButton]}
-                    onPress={handleLogout}>
+                    onPress={() => navigation.navigate('BuscarPontos')}>
                     <Text style={localStyles.buttonText}>Ver meus pontos</Text>
                 </TouchableOpacity>
             </View>

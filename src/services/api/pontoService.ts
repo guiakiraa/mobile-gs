@@ -1,4 +1,4 @@
-import { PontoDistribuicao } from '../../types/types';
+import { PontoDistribuicao, PontoDistribuicaoProximoDTO } from '../../types/types';
 import api from './api';
 
 export const pontoService = {
@@ -87,6 +87,28 @@ export const pontoService = {
       });
     } catch (error: any) {
       console.error('Erro ao deletar ponto:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+        headers: error.response?.headers
+      });
+      throw error;
+    }
+  },
+
+  getPontosProximos: async (cep: string): Promise<PontoDistribuicaoProximoDTO[]> => {
+    try {
+      const response = await api.get(`/ponto-distribuicao/proximos?cep=${cep}`);
+      
+      console.log('Resposta getPontosProximos:', {
+        status: response.status,
+        data: response.data,
+        headers: response.headers
+      });
+      
+      return response.data;
+    } catch (error: any) {
+      console.error('Erro ao buscar pontos próximos:', {
         message: error.message,
         response: error.response?.data,
         status: error.response?.status,

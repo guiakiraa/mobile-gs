@@ -23,7 +23,19 @@ export interface PontoDistribuicao {
     cep: string;
     logradouro: string;
     numero: string;
-}
+};
+
+export interface PontoDistribuicaoProximoDTO {
+    id: number;
+    nome: string;
+    tipo: string;
+    cep: string;
+    numero: string;
+    logradouro: string;
+    latitude: number;
+    longitude: number;
+    distanciaEmKm: number;
+};
 
 export interface Endereco {
     id: number;
@@ -47,6 +59,7 @@ export type RootStackParamList = {
         ponto: PontoDistribuicao;
     };
     CadastrarAjuda: undefined;
+    BuscarPontos: undefined;
 };
 
 // Props de navegação

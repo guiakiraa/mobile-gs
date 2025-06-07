@@ -148,7 +148,7 @@ export default function ListarPontosScreen() {
 const localStyles = StyleSheet.create({
     card: {
         flexDirection: 'row',
-        backgroundColor: '#2EC4B6', // verde-água claro
+        backgroundColor: '#2EC4B6',
         borderRadius: 12,
         marginBottom: 16,
         overflow: 'hidden',

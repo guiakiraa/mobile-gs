@@ -9,6 +9,7 @@ import ListarPontosScreen from './src/screens/ListarPontosScreen';
 import EditarPontoScreen from './src/screens/EditarPontoScreen';
 import CadastrarAjudaScreen from './src/screens/CadastrarAjudaScreen';
 import { RootStackParamList } from './src/types/types';
+import BuscarPontosScreen from './src/screens/BuscarPontosScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -16,7 +17,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="ListarPontos"
+        initialRouteName="Login"
         screenOptions={{
           headerShown: false,
           animation: 'fade'
@@ -29,6 +30,7 @@ export default function App() {
         <Stack.Screen name="ListarPontos" component={ListarPontosScreen} />
         <Stack.Screen name="EditarPonto" component={EditarPontoScreen} />
         <Stack.Screen name="CadastrarAjuda" component={CadastrarAjudaScreen} />
+        <Stack.Screen name="BuscarPontos" component={BuscarPontosScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
