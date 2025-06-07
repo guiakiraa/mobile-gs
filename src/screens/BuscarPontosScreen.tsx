@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ImageBackground, ToastAndroid, ScrollView, FlatList, ActivityIndicator } from 'react-native';
+import {
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    ImageBackground,
+    ToastAndroid,
+    ScrollView,
+    FlatList,
+    ActivityIndicator,
+    StyleSheet,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import fundo from '../../assets/fundo6.png';
-import styles from '../styles/styles';
 import { Feather } from '@expo/vector-icons';
 import { pontoService } from '../services/api/pontoService';
 import { PontoDistribuicaoProximoDTO } from '../types/types';
@@ -20,7 +30,7 @@ export default function BuscarPontosScreen() {
         try {
             const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
             const data = await response.json();
-            
+
             if (!data.erro) {
                 setLogradouro(data.logradouro);
                 setCidade(data.localidade);
@@ -75,7 +85,7 @@ export default function BuscarPontosScreen() {
                     </TouchableOpacity>
                     <View style={styles.form}>
                         <Text style={styles.welcome}>BUSCAR PONTOS PRÓXIMOS</Text>
-                        
+
                         <Text style={styles.label}>CEP</Text>
                         <TextInput
                             placeholder="Digite o CEP"
@@ -151,4 +161,81 @@ export default function BuscarPontosScreen() {
             </ScrollView>
         </ImageBackground>
     );
-} 
+}
+
+const styles = StyleSheet.create({
+    background: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    container: {
+        flex: 1,
+        padding: 20,
+        justifyContent: 'center',
+    },
+    backButton: {
+        marginTop: 40,
+        marginBottom: 20,
+    },
+    form: {
+        marginTop: 10,
+    },
+    welcome: {
+        fontSize: 18,
+        color: '#fff',
+        fontWeight: 'bold',
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+    label: {
+        color: '#fff',
+        fontSize: 14,
+        marginBottom: 5,
+    },
+    input: {
+        backgroundColor: 'rgba(0, 105, 120, 0.4)',
+        borderRadius: 10,
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+        color: '#fff',
+        fontSize: 16,
+        marginBottom: 10,
+    },
+    button: {
+        marginTop: 20,
+        backgroundColor: '#0077c2',
+        paddingVertical: 15,
+        borderRadius: 10,
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
+    pontoCard: {
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        padding: 15,
+        borderRadius: 10,
+        marginBottom: 15,
+    },
+    pontoInfo: {
+        flexDirection: 'column',
+    },
+    pontoNome: {
+        fontWeight: 'bold',
+        color: '#fff',
+        fontSize: 16,
+        marginBottom: 5,
+    },
+    pontoEndereco: {
+        color: '#ccc',
+        fontSize: 14,
+    },
+    pontoCapacidade: {
+        marginTop: 5,
+        color: '#8ef',
+        fontSize: 14,
+    },
+});

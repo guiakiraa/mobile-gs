@@ -157,7 +157,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
     padding: 8,
     borderRadius: 5,
-    backgroundColor: '#ff0000',
   },
 });
 

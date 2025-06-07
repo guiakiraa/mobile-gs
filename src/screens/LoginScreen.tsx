@@ -80,8 +80,8 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
   },
   container: {
     flex: 1,

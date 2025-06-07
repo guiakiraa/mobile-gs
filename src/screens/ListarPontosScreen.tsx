@@ -185,9 +185,9 @@ const localStyles = StyleSheet.create({
         height: '50%',
     },
     editButton: {
-        backgroundColor: '#007F7F', // verde-água escuro
+        backgroundColor: '#007F7F',
     },
     deleteButton: {
-        backgroundColor: '#FF4D4D', // vermelho
+        backgroundColor: '#FF4D4D',
     },
 });

@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
-import { ImageBackground, View, TextInput, Text, StyleSheet, TouchableOpacity, ToastAndroid, ScrollView } from "react-native";
-import styles from "../styles/styles";
+import {
+    ImageBackground,
+    View,
+    TextInput,
+    Text,
+    TouchableOpacity,
+    ToastAndroid,
+    ScrollView,
+    StyleSheet
+} from "react-native";
 import fundo from "../../assets/fundo6.png";
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
@@ -18,7 +26,7 @@ export default function CadastrarPontoScreen() {
         try {
             const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
             const data = await response.json();
-            
+
             if (!data.erro) {
                 setLogradouro(data.logradouro);
             }
@@ -51,47 +59,37 @@ export default function CadastrarPontoScreen() {
 
     return (
         <ImageBackground source={fundo} style={styles.background}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }} horizontal={false}>
                 <View style={styles.container}>
-                    <TouchableOpacity 
-                        style={{
-                            padding: 8,
-                            borderRadius: 5,
-                            backgroundColor: '#ff0000',
-                            position: 'absolute',
-                            top: 20,
-                            left: 20,
-                            zIndex: 1
-                        }} 
+                    <TouchableOpacity
+                        style={styles.backButton}
                         onPress={() => navigation.goBack()}
                     >
                         <Feather name="arrow-left" size={24} color="#fff" />
                     </TouchableOpacity>
+
                     <View style={styles.form}>
-                        <Text style={styles.welcome}>CADASTRAR PONTO</Text>
-                        
-                        <Text style={styles.label}>NOME</Text>
+                        <Text style={styles.welcome}>Cadastrar Ponto de Distribuição</Text>
+
                         <TextInput
-                            placeholder="Digite o nome do ponto"
-                            placeholderTextColor="#aaa"
+                            placeholder="Nome"
+                            placeholderTextColor="#ccc"
                             style={styles.input}
                             value={nome}
                             onChangeText={setNome}
                         />
 
-                        <Text style={[styles.label, { marginTop: 20 }]}>TIPO</Text>
                         <TextInput
-                            placeholder="Digite o tipo do ponto"
-                            placeholderTextColor="#aaa"
+                            placeholder="Tipo"
+                            placeholderTextColor="#ccc"
                             style={styles.input}
                             value={tipo}
                             onChangeText={setTipo}
                         />
 
-                        <Text style={[styles.label, { marginTop: 20 }]}>CEP</Text>
                         <TextInput
-                            placeholder="Digite o CEP"
-                            placeholderTextColor="#aaa"
+                            placeholder="CEP"
+                            placeholderTextColor="#ccc"
                             style={styles.input}
                             value={cep}
                             onChangeText={(text) => {
@@ -103,29 +101,34 @@ export default function CadastrarPontoScreen() {
                             keyboardType="numeric"
                         />
 
-                        <Text style={[styles.label, { marginTop: 20 }]}>LOGRADOURO</Text>
                         <TextInput
-                            placeholder="Digite o logradouro"
-                            placeholderTextColor="#aaa"
+                            placeholder="Logradouro"
+                            placeholderTextColor="#ccc"
                             style={styles.input}
                             value={logradouro}
                             onChangeText={setLogradouro}
                         />
 
-                        <Text style={[styles.label, { marginTop: 20 }]}>NÚMERO</Text>
                         <TextInput
-                            placeholder="Digite o número"
-                            placeholderTextColor="#aaa"
+                            placeholder="Número"
+                            placeholderTextColor="#ccc"
                             style={styles.input}
                             value={numero}
                             onChangeText={setNumero}
                         />
 
                         <TouchableOpacity
-                            style={styles.button}
+                            style={styles.buttonPrimary}
                             onPress={handleCadastrar}
                         >
-                            <Text style={styles.buttonText}>CADASTRAR</Text>
+                            <Text style={styles.buttonText}>SALVAR ALTERAÇÕES</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={styles.buttonSecondary}
+                            onPress={() => navigation.goBack()}
+                        >
+                            <Text style={styles.buttonText}>CANCELAR</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -133,3 +136,64 @@ export default function CadastrarPontoScreen() {
         </ImageBackground>
     );
 }
+
+const styles = StyleSheet.create({
+    background: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    container: {
+        flex: 1,
+        padding: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    backButton: {
+        position: 'absolute',
+        top: 40,
+        left: 20,
+        zIndex: 10,
+    },
+    form: {
+        width: '100%',
+        maxWidth: 400,
+        justifyContent: 'center',
+        paddingVertical: 60,
+    },
+    welcome: {
+        fontSize: 16,
+        color: '#fff',
+        fontWeight: 'bold',
+        textAlign: 'left',
+        marginBottom: 30,
+    },
+    input: {
+        backgroundColor: '#008b8b',
+        color: '#fff',
+        borderRadius: 6,
+        paddingHorizontal: 16,
+        paddingVertical: 12,
+        fontSize: 14,
+        marginBottom: 16,
+    },
+    buttonPrimary: {
+        backgroundColor: '#006666',
+        paddingVertical: 14,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    buttonSecondary: {
+        backgroundColor: '#ff4d4d',
+        paddingVertical: 14,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    buttonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 13,
+    },
+});

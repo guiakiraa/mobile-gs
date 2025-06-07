@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ImageBackground, ToastAndroid, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, ToastAndroid, StyleSheet } from 'react-native';
 import { useRoute, useNavigation, RouteProp } from '@react-navigation/native';
 import fundo from '../../assets/fundo6.png';
-import styles from '../styles/styles';
 import { pontoService } from '../services/api/pontoService';
 import { PontoDistribuicao } from '../types/types';
 import { Feather } from '@expo/vector-icons';
@@ -57,70 +56,106 @@ export default function EditarPontoScreen() {
                 <Feather name="arrow-left" size={24} color="#fff" />
             </TouchableOpacity>
             <View style={styles.container}>
-                <View style={styles.form}>
-                    <Text style={styles.welcome}>EDITAR PONTO</Text>
-                    
-                    <Text style={styles.label}>NOME</Text>
-                    <TextInput
-                        placeholder="Digite o nome do ponto"
-                        placeholderTextColor="#aaa"
-                        style={styles.input}
-                        value={nome}
-                        onChangeText={setNome}
-                    />
+                <Text style={styles.headerText}>Editar Ponto</Text>
 
-                    <Text style={[styles.label, { marginTop: 20 }]}>TIPO</Text>
-                    <TextInput
-                        placeholder="Digite o tipo do ponto"
-                        placeholderTextColor="#aaa"
-                        style={styles.input}
-                        value={tipo}
-                        onChangeText={setTipo}
-                    />
+                <TextInput
+                    style={styles.input}
+                    placeholder="NOME"
+                    placeholderTextColor="#fff"
+                    value={nome}
+                    onChangeText={setNome}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="TIPO"
+                    placeholderTextColor="#fff"
+                    value={tipo}
+                    onChangeText={setTipo}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="CEP"
+                    placeholderTextColor="#fff"
+                    keyboardType="numeric"
+                    value={cep}
+                    onChangeText={setCep}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="LOGRADOURO"
+                    placeholderTextColor="#fff"
+                    value={logradouro}
+                    onChangeText={setLogradouro}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="NÚMERO"
+                    placeholderTextColor="#fff"
+                    value={numero}
+                    onChangeText={setNumero}
+                />
 
-                    <Text style={[styles.label, { marginTop: 20 }]}>CEP</Text>
-                    <TextInput
-                        placeholder="Digite o CEP"
-                        placeholderTextColor="#aaa"
-                        style={styles.input}
-                        value={cep}
-                        onChangeText={setCep}
-                        keyboardType="numeric"
-                    />
+                <TouchableOpacity style={styles.saveButton} onPress={handleSalvar}>
+                    <Text style={styles.buttonText}>SALVAR ALTERAÇÕES</Text>
+                </TouchableOpacity>
 
-                    <Text style={[styles.label, { marginTop: 20 }]}>LOGRADOURO</Text>
-                    <TextInput
-                        placeholder="Digite o logradouro"
-                        placeholderTextColor="#aaa"
-                        style={styles.input}
-                        value={logradouro}
-                        onChangeText={setLogradouro}
-                    />
-
-                    <Text style={[styles.label, { marginTop: 20 }]}>NÚMERO</Text>
-                    <TextInput
-                        placeholder="Digite o número"
-                        placeholderTextColor="#aaa"
-                        style={styles.input}
-                        value={numero}
-                        onChangeText={setNumero}
-                    />
-
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={handleSalvar}
-                    >
-                        <Text style={styles.buttonText}>SALVAR ALTERAÇÕES</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        style={[styles.button, { marginTop: 10, backgroundColor: '#ff0000' }]}
-                        onPress={() => navigation.goBack()}
-                    >
-                        <Text style={styles.buttonText}>CANCELAR</Text>
-                    </TouchableOpacity>
-                </View>
+                <TouchableOpacity style={styles.cancelButton} onPress={() => navigation.goBack()}>
+                    <Text style={styles.buttonText}>CANCELAR</Text>
+                </TouchableOpacity>
             </View>
         </ImageBackground>
     );
-} 
+}
+
+const styles = StyleSheet.create({
+    background: {
+      flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    container: {
+        paddingHorizontal: 30,
+        marginTop: 60,
+    },
+    backButton: {
+        position: 'absolute',
+        top: 50,
+        left: 20,
+        zIndex: 1,
+    },
+    headerText: {
+        color: '#fff',
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 20,
+        alignSelf: 'center',
+    },
+    input: {
+        backgroundColor: '#027373',
+        borderRadius: 8,
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+        color: '#fff',
+        marginBottom: 12,
+        fontSize: 14,
+    },
+    saveButton: {
+        backgroundColor: '#027373',
+        borderRadius: 8,
+        paddingVertical: 14,
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    cancelButton: {
+        backgroundColor: '#FF5C5C',
+        borderRadius: 8,
+        paddingVertical: 14,
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    buttonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 14,
+    },
+});
